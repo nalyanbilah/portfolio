@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
-import ProjectDetail from './pages/Projects';
+import ProjectDetail from './pages/ProjectDetail';
 import Contact from './pages/Contact';
 import Playground from './pages/Playground';
 
@@ -22,7 +22,7 @@ function App() {
   }, [darkMode]);
 
   return (
-    <Router basename="/portfolio">
+    <Router>
       <div className={`min-h-screen bg-gradient-to-br from-lavender-50 via-white to-pink-50 dark:from-midnight-900 dark:via-midnight-800 dark:to-midnight-900 text-gray-900 dark:text-gray-100`}>
         <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
         <AnimatePresence mode="wait">
