@@ -45,7 +45,7 @@ const ProjectDetail = () => {
       className="min-h-screen pt-20"
     >
       {/* Hero Section */}
-      <div className={`relative overflow-hidden bg-gradient-to-br from-${project.color}-100 to-${project.color}-50 dark:from-${project.color}-900/20 dark:to-midnight-900`}>
+      <div className="relative overflow-hidden bg-gradient-to-br from-lavender-100 to-pink-50 dark:from-lavender-900/20 dark:to-midnight-900">
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] dark:opacity-[0.05]" />
         
         <div className="max-w-7xl mx-auto px-4 py-16">
@@ -252,30 +252,11 @@ const ProjectDetail = () => {
                     transition={{ delay: index * 0.1 }}
                     className="px-4 py-2 bg-gradient-to-r from-lavender-100 to-pink-100 dark:from-lavender-900/20 dark:to-pink-900/20 rounded-full"
                   >
-                                        {concept}
+                    {concept}
                   </motion.span>
                 ))}
               </div>
             </div>
-            
-            {project.ideation.sketches && project.ideation.sketches.length > 0 && (
-              <div>
-                <h3 className="font-semibold text-xl mb-4">Early Sketches</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {project.ideation.sketches.map((sketch, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      className="aspect-video bg-gray-100 dark:bg-midnight-800 rounded-lg flex items-center justify-center"
-                    >
-                      <span className="text-gray-400">Sketch {index + 1}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </motion.section>
 
@@ -318,26 +299,6 @@ const ProjectDetail = () => {
                 </div>
               </div>
             </div>
-
-            {/* Mockups */}
-            {project.ui.mockups && project.ui.mockups.length > 0 && (
-              <div>
-                <h3 className="font-semibold text-xl mb-4">Final Designs</h3>
-                <div className="grid gap-6">
-                  {project.ui.mockups.map((mockup, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      className="aspect-video bg-gray-100 dark:bg-midnight-800 rounded-xl shadow-lg flex items-center justify-center"
-                    >
-                      <span className="text-gray-400">UI Mockup {index + 1}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </motion.section>
 
@@ -374,14 +335,6 @@ const ProjectDetail = () => {
                 </div>
               </div>
 
-              {/* Challenges */}
-              <div className="bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-400 p-6 rounded-r-lg">
-                <h3 className="font-semibold text-xl mb-3">Key Challenges</h3>
-                <p className="text-gray-700 dark:text-gray-300">
-                  {project.development.challenges}
-                </p>
-              </div>
-
               {/* What I Learned */}
               <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 p-6 rounded-r-lg">
                 <h3 className="font-semibold text-xl mb-3 flex items-center gap-2">
@@ -391,32 +344,6 @@ const ProjectDetail = () => {
                 <p className="text-gray-700 dark:text-gray-300">
                   {project.development.learnings}
                 </p>
-              </div>
-
-              {/* Links */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.a
-                  href={project.development.liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-lavender-500 to-pink-400 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <HiExternalLink />
-                  View Live Site
-                </motion.a>
-                <motion.a
-                  href={project.development.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-lavender-500 text-lavender-600 dark:text-lavender-400 rounded-full font-medium hover:bg-lavender-50 dark:hover:bg-lavender-900/20 transition-colors"
-                >
-                  <FaGithub />
-                  Explore the Code
-                </motion.a>
               </div>
             </div>
           </motion.section>
@@ -429,7 +356,7 @@ const ProjectDetail = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display text-3xl font-bold mb-6 gradient-text">Reflection</h2>
+                    <h2 className="font-display text-3xl font-bold mb-6 gradient-text">Reflection</h2>
           <div className="bg-gradient-to-r from-lavender-50 to-pink-50 dark:from-lavender-900/20 dark:to-pink-900/20 p-8 rounded-2xl">
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
               {project.reflection}
@@ -458,6 +385,7 @@ const ProjectDetail = () => {
                   const currentIndex = projects.findIndex(p => p.id === project.id);
                   const nextIndex = (currentIndex + 1) % projects.length;
                   navigate(`/project/${projects[nextIndex].id}`);
+                  window.scrollTo(0, 0);
                 }}
                 className="flex items-center gap-2 text-lavender-600 dark:text-lavender-400 hover:text-lavender-700 dark:hover:text-lavender-300 transition-colors"
               >
